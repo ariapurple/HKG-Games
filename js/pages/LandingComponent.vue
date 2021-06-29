@@ -114,14 +114,22 @@ export default {
     },
     scroll() {
       window.onscroll = () => {
+        console.log(
+          Math.max(
+            window.pageYOffset,
+            document.documentElement.scrollTop,
+            document.body.scrollTop
+          ) + window.innerHeight
+        );
+        console.log(document.documentElement.offsetHeight);
         let bottomOfWindow =
           Math.max(
             window.pageYOffset,
             document.documentElement.scrollTop,
             document.body.scrollTop
           ) +
-            window.innerHeight ===
-          document.documentElement.offsetHeight;
+            window.innerHeight >=
+          document.documentElement.offsetHeight - 100;
 
         if (bottomOfWindow && this.end == false) {
           this.getNews();
